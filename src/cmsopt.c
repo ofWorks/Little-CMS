@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------
 //
 //  Little Color Management System
-//  Copyright (c) 1998-2024 Marti Maria Saguer
+//  Copyright (c) 1998-2026 Marti Maria Saguer
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the "Software"),
@@ -788,6 +788,11 @@ Error:
             DataSetIn,
             Dest ->OutputChannels,
             DataSetOut);
+
+        if (p16 == NULL) {
+            cmsPipelineFree(Dest);
+            return FALSE;
+        }
 
         _cmsPipelineSetOptimizationParameters(Dest, PrelinEval16, (void*) p16, PrelinOpt16free, Prelin16dup);
     }
